@@ -1,13 +1,11 @@
-package com.stacks;
+package jedi;
 
-import java.util.Stack;
+public interface StackInterface<E>  {
 
-public interface StackInterface<Integer> {
-
-    boolean push(int item);
-    int pop();
-    int peek();
+    boolean push(E item);
+    E pop();
+    E peek();
     boolean isEmpty();
-    void reverse(Stack<Integer> stack);
-
+    int size();
+    void clear();
 }
