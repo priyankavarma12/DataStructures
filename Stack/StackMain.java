@@ -1,40 +1,21 @@
-package com.stacks;
-
-import java.util.Stack;
+package jedi;
 
 public class StackMain {
 
-   private static Stack<Integer> stack = new Stack<>();
-
     public static void main(String[] args) {
 
-        StackOperationsUsingArrays stackOpsArr = new StackOperationsUsingArrays();
-        System.out.println("Stack Operations :: ");
-        stackOpsArr.push(2);
-        stackOpsArr.printStack();
-        stackOpsArr.push(5);
-        stackOpsArr.printStack();
-        stackOpsArr.pop();
-        stackOpsArr.printStack();
-        stackOpsArr.push(6);
-        stackOpsArr.printStack();
-        //stackOpsArr.peek();
-        stackOpsArr.push(7);
-        stackOpsArr.printStack();
-
-        System.out.println("Reverse stack using recursion");
-        StackOperationsUsingArrays stackReverse = new StackOperationsUsingArrays();
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        stack.push(4);
-        stack.push(5);
-
-        System.out.println("Original Stack :: "+stack);
-        stackReverse.reverse(stack);
-        System.out.println("Reverse Stack :: "+stack);
-
-
-
+        StackOperations<Integer> obj = new StackOperations<>(6);
+        obj.push(20);
+        obj.push(14);
+        obj.push(12);
+        obj.push(15);
+        obj.pop();
+        obj.push(10);
+       // System.out.println("is empty :: "+obj.isEmpty());
+        System.out.println("Top most item :: "+obj.peek());
+        System.out.println("Size of stack :: "+obj.size());
+        System.out.println("Stack of Integer :: "+obj);
+        obj.clear();
+        System.out.println("Size of stack :: "+obj.size());
     }
 }
