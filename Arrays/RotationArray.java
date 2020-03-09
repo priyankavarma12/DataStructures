@@ -2,27 +2,37 @@ package com.arrays;
 
 import java.util.Arrays;
 
-public class RotationArray {
+public class RotationArrays {
+    
+    private static void rotateArray(int[] arr, int k) {
+        k = k % arr.length;
+        reverse(arr, 0, arr.length - 1);
+        reverse(arr, 0, k - 1);
+        reverse(arr, k, arr.length - 1);
+    }
 
-    private static int rotationArray(int num[], int rotation){
-        int temp = 0;
-        for(int i=0;i<rotation;i++){
-            temp = num[num.length-1];
-            for(int j = num.length-1; j >0; j--){
-                num[j] = num[j-1];
-            }
-            num[0] = temp;
+    private static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
         }
-
-        return temp;
     }
 
     public static void main(String[] args) {
-        int num[] = new int[]{1,2,3,4,5,6,7};
-        System.out.print("Input Array Before Rotation :: ");
-        System.out.println(Arrays.toString(num));
-        rotationArray(num, 3);
-        System.out.print("Input Array After rotation :: ");
-        System.out.println(Arrays.toString(num));
+
+        int arr[] = new int[]{1, 2, 3, 4, 5};
+
+        System.out.println("Array before rotation :: ");
+        System.out.println(Arrays.toString(arr));
+
+        rotateArray(arr, 3);
+
+        System.out.println("Array after rotation :: ");
+        System.out.println(Arrays.toString(arr));
+
     }
+
 }
