@@ -1,5 +1,9 @@
 package com.trees;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class BinaryTreeUtil {
 
      static class TreeNode {
@@ -65,4 +69,25 @@ public class BinaryTreeUtil {
     public boolean isValidSymmetric(TreeNode root){
         return isSymmetric(root, root);
     }
+     
+     public List<List<Integer>> levelOrderBottom(BinaryTreeUtil.TreeNode root) {
+        Queue<BinaryTreeUtil.TreeNode> queue = new LinkedList<BinaryTreeUtil.TreeNode>();
+        List<List<Integer>> listResult = new LinkedList<List<Integer>>();
+
+        if (root == null) return listResult;
+
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int levelNum = queue.size();
+            List<Integer> subList = new LinkedList<Integer>();
+            for (int i = 0; i < levelNum; i++) {
+                if (queue.peek().left != null) queue.offer(queue.peek().left);
+                if (queue.peek().right != null) queue.offer(queue.peek().right);
+                subList.add(queue.poll().data);
+            }
+            listResult.add(0, subList);
+        }
+        return listResult;
+    }
+
 }
